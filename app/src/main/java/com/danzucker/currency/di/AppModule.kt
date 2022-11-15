@@ -1,6 +1,7 @@
 package com.danzucker.currency.di
 
 import androidx.viewbinding.BuildConfig
+import com.danzucker.currency.business.datasource.remote.CurrencyApiService
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -58,4 +59,11 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
     }
 
+    @Singleton
+    @Provides
+    fun provideCurrencyApiService(retrofitBuilder: Retrofit.Builder): CurrencyApiService {
+        return retrofitBuilder
+            .build()
+            .create(CurrencyApiService::class.java)
+    }
 }

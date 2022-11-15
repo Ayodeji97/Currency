@@ -1,6 +1,7 @@
 package com.danzucker.currency.business.datasource.remote.remotesource
 
-interface ConvertCurrencyRemoteSource {
+import com.danzucker.currency.business.datasource.remote.model.convert.ConvertDto
 
-    suspend fun convert()
+interface ConvertCurrencyRemoteSource {
+    suspend fun convertCurrency() : Result<ConvertDto>
 }
