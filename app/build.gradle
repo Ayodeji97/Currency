@@ -1,6 +1,10 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -29,6 +33,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
@@ -40,4 +49,121 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Navigation Component
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // Fragment
+    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
+
+    // Activity
+    implementation "androidx.activity:activity-ktx:$activityVersion"
+
+    // Lifecycle + ViewModel & LiveData
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleExtensionsVersion"
+
+
+    // retrofit2 + gson
+    def retrofit2_version = "2.9.0"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit2_version"
+
+    // interceptor
+    def interceptor_version = "5.0.0-alpha.2"
+    implementation "com.squareup.okhttp3:logging-interceptor:$interceptor_version"
+
+    // Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+//    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+
+    // Core Test
+    testImplementation "androidx.test:core:$coreTestVersion"
+    testImplementation "androidx.arch.core:core-testing:$archCoreTestVersion"
+    testImplementation "androidx.test:core-ktx:$coreKTXTestVersion"
+
+    // Mockito - Local
+    testImplementation "org.mockito:mockito-core:$mockitoLocalVersion"
+    testImplementation "org.mockito:mockito-inline:$mockitoInlineLocalVersion"
+
+    // Mockk - Local
+    testImplementation "io.mockk:mockk:$mockkLocalVersion"
+
+    // MockWebServer
+    def mockWebServer = "4.9.1"
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServer"
+    androidTestImplementation "io.mockk:mockk:1.10.5"
+    testImplementation "org.mockito:mockito-core:4.0.0"
+
+    testImplementation "com.squareup.okhttp3:mockwebserver:$mockWebServer"
+    testImplementation "io.mockk:mockk:1.10.5"
+
+
+    // Junit
+    testImplementation "junit:junit:$junitVersion"
+
+    // Truth
+    testImplementation "com.google.truth:truth:$truthVersion"
+
+    // Hamcrest
+    testImplementation "org.hamcrest:hamcrest-all:$hamcrestVersion"
+
+    // Robo electric
+    testImplementation "org.robolectric:robolectric:$roboelectricTestVersion"
+
+    // Coroutine Test
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineTestVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineTestVersion"
+
+    // Test Rule & Ext
+    testImplementation "androidx.test.ext:junit-ktx:$junitKTXVersion"
+    testImplementation "androidx.test:rules:$testRuleVersion"
+
+    // Core
+    androidTestImplementation "androidx.arch.core:core-testing:$archCoreTestVersion"
+    androidTestImplementation "androidx.test:core-ktx:$coreTestVersion"
+
+    // Coroutine
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutineTestVersion"
+
+    // Test
+    androidTestImplementation "androidx.test.ext:junit-ktx:$junitKTXVersion"
+    androidTestImplementation "androidx.test:rules:$testRuleVersion"
+
+    // Junit
+    androidTestImplementation "junit:junit:$junitVersion"
+
+    // Robo electric
+    androidTestImplementation "org.robolectric:annotations:$roboelectricTestVersion"
+
+    // Espresso
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+
+    // Espresso-idling
+    androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:$espressoVersion"
+
+    // Mockito
+    androidTestImplementation "org.mockito:mockito-core:$mockitoLocalVersion"
+
+    // Truth
+    androidTestImplementation "com.google.truth:truth:$truthVersion"
+
+    def glide_version = "4.12.0"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
 }
