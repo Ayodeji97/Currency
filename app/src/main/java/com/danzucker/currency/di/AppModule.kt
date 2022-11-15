@@ -2,6 +2,7 @@ package com.danzucker.currency.di
 
 import androidx.viewbinding.BuildConfig
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
+import com.danzucker.currency.business.utils.Constants.BASE_URL
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
@@ -55,7 +56,7 @@ object AppModule {
     @Provides
     fun provideRetrofitBuilder(gsonBuilder: Gson): Retrofit.Builder {
         return Retrofit.Builder()
-            .baseUrl("")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
     }
 

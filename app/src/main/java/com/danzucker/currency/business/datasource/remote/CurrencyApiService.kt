@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface CurrencyApiService {
 
-    @Headers("Authorization:apikey $API_KEY")
+    @Headers("apikey:$API_KEY")
     @GET("convert")
     suspend fun convertCurrency(
         @Query("from") from: String,
