@@ -1,7 +1,7 @@
 package com.danzucker.currency.business.datasource.remote.remotesource
 
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertDto
+import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.datasource.remote.utils.GenericErrorEntity
 import com.danzucker.currency.business.datasource.remote.utils.convertErrorBody
 import com.danzucker.currency.business.utils.Result
@@ -10,7 +10,6 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException
 import java.io.IOException
-import java.lang.Exception
 import javax.inject.Inject
 
 class ConvertCurrencyRemoteSourceImpl @Inject constructor(
@@ -21,7 +20,7 @@ class ConvertCurrencyRemoteSourceImpl @Inject constructor(
         from: String,
         to: String,
         amount: String
-    ): Result<ConvertDto> =
+    ): Result<ConvertCurrencyDto> =
         withContext(ioDispatcher) {
             return@withContext try {
                 val apiResponse = currencyApiService.convertCurrency(from, to, amount)

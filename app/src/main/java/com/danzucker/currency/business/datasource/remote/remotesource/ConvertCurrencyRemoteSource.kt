@@ -1,6 +1,6 @@
 package com.danzucker.currency.business.datasource.remote.remotesource
 
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertDto
+import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.utils.Result
 
 interface ConvertCurrencyRemoteSource {
@@ -8,5 +8,5 @@ interface ConvertCurrencyRemoteSource {
         from: String,
         to: String,
         amount: String
-    ): Result<ConvertDto>
+    ): Result<ConvertCurrencyDto>
 }

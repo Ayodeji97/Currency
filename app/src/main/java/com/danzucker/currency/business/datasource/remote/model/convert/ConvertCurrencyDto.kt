@@ -2,15 +2,15 @@ package com.danzucker.currency.business.datasource.remote.model.convert
 
 import com.google.gson.annotations.SerializedName
 
-data class ConvertDto(
+data class ConvertCurrencyDto(
     @SerializedName("date")
     val date: String? = null,
 
     @SerializedName("info")
-    val info: Info? = null,
+    val info: InfoDto? = null,
 
     @SerializedName("query")
-    val query: String? = null,
+    val query: QueryDto? = null,
 
     @SerializedName("result")
     val result: Double? = null,
@@ -19,7 +19,7 @@ data class ConvertDto(
     val success: Boolean? = null,
 )
 
-data class Info(
+data class InfoDto(
     @SerializedName("rate")
     val rate: Double? = null,
 
@@ -27,7 +27,7 @@ data class Info(
     val timestamp: Long? = null
 )
 
-data class Query(
+data class QueryDto(
     @SerializedName("amount")
     val amount: Double,
 

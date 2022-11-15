@@ -1,6 +1,6 @@
 package com.danzucker.currency.business.datasource.remote
 
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertDto
+import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.utils.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -15,5 +15,5 @@ interface CurrencyApiService {
         @Query("from") from: String,
         @Query("to") to: String,
         @Query("amount") amount: String,
-    ) : Response<ConvertDto>
+    ) : Response<ConvertCurrencyDto>
 }
