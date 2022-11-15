@@ -1,4 +1,4 @@
-package com.danzucker.currency.business.datasource.remote.remotesource
+package com.danzucker.currency.business.datasource.remote.remotesource.convert
 
 import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.utils.Result

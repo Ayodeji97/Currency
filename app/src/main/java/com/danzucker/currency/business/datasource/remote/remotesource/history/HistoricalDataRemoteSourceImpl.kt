@@ -1,9 +1,7 @@
-package com.danzucker.currency.business.datasource.remote.remotesource
+package com.danzucker.currency.business.datasource.remote.remotesource.history
 
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
-import com.danzucker.currency.business.datasource.remote.utils.GenericErrorEntity
-import com.danzucker.currency.business.datasource.remote.utils.convertErrorBody
+import com.danzucker.currency.business.datasource.remote.model.historical.HistoricalDataDto
 import com.danzucker.currency.business.utils.Result
 import com.danzucker.currency.di.dispatcher.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
@@ -13,21 +11,20 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-class ConvertCurrencyRemoteSourceImpl @Inject constructor(
+class HistoricalDataRemoteSourceImpl @Inject constructor(
     private val currencyApiService: CurrencyApiService,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher
-) : ConvertCurrencyRemoteSource {
-    override suspend fun convertCurrency(
-        from: String,
-        to: String,
-        amount: String
-    ): Result<ConvertCurrencyDto> =
+) : HistoricalDataRemoteSource {
+    override suspend fun getHistoricalData(
+        startDate: String,
+        endDate: String
+    ): Result<HistoricalDataDto> =
         withContext(ioDispatcher) {
             return@withContext try {
-                val apiResponse = currencyApiService.convertCurrency(from, to, amount)
+                val apiResponse = currencyApiService.getHistoricalData(startDate, endDate)
                 if (apiResponse.isSuccessful) {
-                    val currencyInfo = apiResponse.body()
-                    Result.Success(currencyInfo)
+                    val historicalData = apiResponse.body()
+                    Result.Success(historicalData)
                 } else {
                     @Suppress("BlockingMethodInNonBlockingContext")
                     val errorMessageObject = apiResponse.errorBody()?.string()
@@ -45,5 +42,4 @@ class ConvertCurrencyRemoteSourceImpl @Inject constructor(
                 )
             }
         }
-
 }

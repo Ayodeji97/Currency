@@ -1,7 +1,9 @@
 package com.danzucker.currency.di.datasource.remotesource
 
-import com.danzucker.currency.business.datasource.remote.remotesource.ConvertCurrencyRemoteSource
-import com.danzucker.currency.business.datasource.remote.remotesource.ConvertCurrencyRemoteSourceImpl
+import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSource
+import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSourceImpl
+import com.danzucker.currency.business.datasource.remote.remotesource.history.HistoricalDataRemoteSource
+import com.danzucker.currency.business.datasource.remote.remotesource.history.HistoricalDataRemoteSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,6 +17,11 @@ abstract class RemoteSourceModule {
     abstract fun provideConvertCurrencyRemoteSource(
         convertCurrencyRemoteSourceImpl: ConvertCurrencyRemoteSourceImpl
     ): ConvertCurrencyRemoteSource
+
+    @Binds
+    abstract fun provideHistoricalDataRemoteSource(
+        historicalDataRemoteSourceImpl: HistoricalDataRemoteSourceImpl
+    ): HistoricalDataRemoteSource
 
 
 }

@@ -1,6 +1,6 @@
 package com.danzucker.currency.business.repository.convert
 
-import com.danzucker.currency.business.datasource.remote.remotesource.ConvertCurrencyRemoteSource
+import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSource
 import com.danzucker.currency.business.domain.model.convert.ConvertCurrency
 import com.danzucker.currency.business.utils.Result
 import com.danzucker.currency.business.utils.mapper.remotemapper.ConvertCurrencyDtoMapper

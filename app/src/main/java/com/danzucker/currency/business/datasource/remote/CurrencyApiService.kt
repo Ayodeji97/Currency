@@ -1,6 +1,7 @@
 package com.danzucker.currency.business.datasource.remote
 
 import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
+import com.danzucker.currency.business.datasource.remote.model.historical.HistoricalDataDto
 import com.danzucker.currency.business.utils.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -16,4 +17,12 @@ interface CurrencyApiService {
         @Query("to") to: String,
         @Query("amount") amount: String,
     ) : Response<ConvertCurrencyDto>
+
+
+    @Headers("apikey:$API_KEY")
+    @GET("timeseries")
+    suspend fun getHistoricalData(
+        @Query("start_date") startDate: String,
+        @Query("end_date") endDate: String,
+    ) : Response<HistoricalDataDto>
 }
