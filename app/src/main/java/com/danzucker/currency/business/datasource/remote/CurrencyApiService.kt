@@ -12,8 +12,8 @@ interface CurrencyApiService {
     @Headers("Authorization:apikey $API_KEY")
     @GET("convert")
     suspend fun convertCurrency(
-        @Query("to") to: String,
         @Query("from") from: String,
+        @Query("to") to: String,
         @Query("amount") amount: String,
     ) : Response<ConvertDto>
 }
