@@ -18,7 +18,5 @@ object TestConstants {
     const val TEST_RESULT = 4602.80484
     const val TEST_RATE = 460.280484
     const val TEST_TIME_STAMP = 1668600304
-    const val TEST_JAPANESE = "Japanese Yen"
-
 
 }

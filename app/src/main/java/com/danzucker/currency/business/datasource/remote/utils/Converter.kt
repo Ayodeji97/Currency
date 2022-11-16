@@ -5,7 +5,6 @@ import com.danzucker.currency.business.datasource.cache.model.CurrencySymbolsEnt
 import com.google.gson.Gson
 
 class Converters {
-
     @TypeConverter
     fun listToJsonString(value: List<String>?): String = Gson().toJson(value)
 
