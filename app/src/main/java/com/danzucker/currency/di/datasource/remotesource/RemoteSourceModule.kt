@@ -6,6 +6,8 @@ import com.danzucker.currency.business.datasource.remote.remotesource.history.Hi
 import com.danzucker.currency.business.datasource.remote.remotesource.history.HistoricalDataRemoteSourceImpl
 import com.danzucker.currency.business.datasource.remote.remotesource.popular.PopularCurrenciesRemoteSource
 import com.danzucker.currency.business.datasource.remote.remotesource.popular.PopularCurrenciesRemoteSourceImpl
+import com.danzucker.currency.business.datasource.remote.remotesource.symbols.CurrencySymbolsRemoteSource
+import com.danzucker.currency.business.datasource.remote.remotesource.symbols.CurrencySymbolsRemoteSourceImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -30,5 +32,9 @@ abstract class RemoteSourceModule {
         popularCurrenciesRemoteSourceImpl: PopularCurrenciesRemoteSourceImpl
     ): PopularCurrenciesRemoteSource
 
+    @Binds
+    abstract fun provideCurrencySymbolsRemoteSource(
+        currencySymbolsRemoteSourceImpl: CurrencySymbolsRemoteSourceImpl
+    ): CurrencySymbolsRemoteSource
 
 }
