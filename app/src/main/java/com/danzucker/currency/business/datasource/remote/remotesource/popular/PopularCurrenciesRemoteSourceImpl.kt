@@ -1,7 +1,7 @@
 package com.danzucker.currency.business.datasource.remote.remotesource.popular
 
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
-import com.danzucker.currency.business.datasource.remote.model.popular.PopularCurrencyDto
+import com.danzucker.currency.business.datasource.remote.model.popular.PopularCurrenciesDto
 import com.danzucker.currency.business.utils.Result
 import com.danzucker.currency.di.dispatcher.IoDispatcher
 import kotlinx.coroutines.CoroutineDispatcher
@@ -18,7 +18,7 @@ class PopularCurrenciesRemoteSourceImpl @Inject constructor(
     override suspend fun getPopularCurrencies(
         base: String,
         symbols: String
-    ): Result<PopularCurrencyDto> =
+    ): Result<PopularCurrenciesDto> =
         withContext(ioDispatcher) {
             return@withContext try {
                 val apiResponse = currencyApiService.getPopularCurrencies(base, symbols)

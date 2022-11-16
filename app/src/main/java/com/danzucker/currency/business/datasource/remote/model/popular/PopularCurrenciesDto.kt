@@ -2,7 +2,7 @@ package com.danzucker.currency.business.datasource.remote.model.popular
 
 import com.google.gson.annotations.SerializedName
 
-data class PopularCurrencyDto(
+data class PopularCurrenciesDto(
     @SerializedName("base")
     val base: String? = null,
 
@@ -17,5 +17,4 @@ data class PopularCurrencyDto(
 
     @SerializedName("timestamp")
     val timestamp: Long? = null,
-
-    )
+)
