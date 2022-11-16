@@ -15,6 +15,6 @@ interface CurrencySymbolsDao {
     suspend fun insert(currencySymbolsEntity: CurrencySymbolsEntity)
 
     @Query("SELECT * FROM currency_table")
-    fun getCurrencySymbols() : Flow<Result<CurrencySymbolsEntity?>>
+    fun getCurrencySymbols() : Flow<CurrencySymbolsEntity?>
 
 }

@@ -11,6 +11,8 @@ class CurrencySymbolsEntityMapper @Inject constructor() :
     override fun transformToEntity(type: CurrencySymbolsDto): CurrencySymbolsEntity =
         CurrencySymbolsEntity(
             id = 0,
-            symbols = type.symbols ?: hashMapOf()
+            symbols = type.symbols?.map {
+                it.key
+            } ?: listOf()
         )
 }

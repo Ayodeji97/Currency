@@ -34,8 +34,11 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        getCurrencySymbolSubscriber()
+
         ui.sampleAction.setOnClickListener {
-            findNavController().navigate(R.id.detailDashboardFragment)
+            test ()
+            //findNavController().navigate(R.id.detailDashboardFragment)
 //            getConvertedCurrency()
 //            convertedCurrencySubscriber ()
         }
@@ -58,6 +61,25 @@ class MainFragment : Fragment() {
                         Toast.makeText(requireContext(), "Success :${state.convertCurrency}", Toast.LENGTH_LONG).show()
                     }
 
+                }
+
+            }
+        }
+    }
+
+    private fun test () {
+        mainViewModel.onTriggeredEvent(MainViewEvent.GetCurrencySymbols)
+    }
+
+    private fun getCurrencySymbolSubscriber() {
+        viewLifecycleOwner.lifecycleScope.launchWhenStarted {
+            mainViewModel.currencySymbolViewState.collectLatest { state->
+                if (state.error != "") {
+                    Toast.makeText(requireContext(), "ErrorSy :${state.error}", Toast.LENGTH_LONG).show()
+                } else {
+                    state.currencySymbols?.let {
+                        Toast.makeText(requireContext(), "SuccessSy :${state.currencySymbols}", Toast.LENGTH_LONG).show()
+                    }
                 }
 
             }

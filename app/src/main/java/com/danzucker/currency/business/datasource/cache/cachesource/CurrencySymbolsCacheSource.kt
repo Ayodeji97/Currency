@@ -12,6 +12,6 @@ class CurrencySymbolsCacheSource @Inject constructor(
     suspend fun saveCurrencySymbols(currencySymbolsEntity: CurrencySymbolsEntity) =
         currencySymbolsDao.insert(currencySymbolsEntity)
 
-    fun getCurrencySymbols(): Flow<Result<CurrencySymbolsEntity?>> =
+    fun getCurrencySymbols(): Flow<CurrencySymbolsEntity?> =
         currencySymbolsDao.getCurrencySymbols()
 }

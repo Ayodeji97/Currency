@@ -9,4 +9,5 @@ object Constants {
 
     // Database Session
     const val CURRENCY_TABLE = "currency_table"
+    const val DATABASE_NAME = "app_database"
 }
