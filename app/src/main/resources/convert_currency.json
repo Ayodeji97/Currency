@@ -1,0 +1,14 @@
+{
+  "date": "2022-11-16",
+  "info": {
+    "rate": 460.280484,
+    "timestamp": 1668600304
+  },
+  "query": {
+    "amount": 10,
+    "from": "EUR",
+    "to": "NGN"
+  },
+  "result": 4602.80484,
+  "success": true
+}
