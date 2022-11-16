@@ -17,11 +17,13 @@ class HistoricalDataRemoteSourceImpl @Inject constructor(
 ) : HistoricalDataRemoteSource {
     override suspend fun getHistoricalData(
         startDate: String,
-        endDate: String
+        endDate: String,
+        from: String,
+        to: String,
     ): Result<HistoricalDataDto> =
         withContext(ioDispatcher) {
             return@withContext try {
-                val apiResponse = currencyApiService.getHistoricalData(startDate, endDate)
+                val apiResponse = currencyApiService.getHistoricalData(startDate, endDate, from, to)
                 if (apiResponse.isSuccessful) {
                     val historicalData = apiResponse.body()
                     Result.Success(historicalData)

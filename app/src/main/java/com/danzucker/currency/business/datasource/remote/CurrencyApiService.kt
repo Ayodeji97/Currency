@@ -24,5 +24,7 @@ interface CurrencyApiService {
     suspend fun getHistoricalData(
         @Query("start_date") startDate: String,
         @Query("end_date") endDate: String,
+        @Query("base") from: String,
+        @Query("symbols") to: String,
     ) : Response<HistoricalDataDto>
 }

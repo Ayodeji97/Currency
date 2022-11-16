@@ -11,7 +11,9 @@ class HistoricalDataUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(
         startDate: String,
-        endDate: String
+        endDate: String,
+        from: String,
+        to: String,
     ): Flow<Result<HistoricalData>> =
-        historicalDataRepository.getHistoricalData(startDate, endDate)
+        historicalDataRepository.getHistoricalData(startDate, endDate, from, to)
 }

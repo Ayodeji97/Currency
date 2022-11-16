@@ -6,6 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface HistoricalDataRepository {
 
-    suspend fun getHistoricalData(startDate: String, endDate: String):
-            Flow<Result<HistoricalData>>
+    suspend fun getHistoricalData(
+        startDate: String,
+        endDate: String,
+        from: String,
+        to: String,
+    ): Flow<Result<HistoricalData>>
 }

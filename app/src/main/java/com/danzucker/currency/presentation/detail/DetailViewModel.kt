@@ -24,15 +24,18 @@ class DetailViewModel @Inject constructor(
     fun onTriggeredEvent(event: DetailViewEvent) {
         when (event) {
             is DetailViewEvent.GetHistoricalCurrencyData ->
-                getHistoricalCurrencyData(event.startDate, event.endDate)
+                getHistoricalCurrencyData(event.startDate, event.endDate,
+                event.from, event.to)
         }
     }
 
-    private fun getHistoricalCurrencyData(startDate: String, endDate: String) {
+    private fun getHistoricalCurrencyData(startDate: String, endDate: String,
+                                          from: String,
+                                          to: String,) {
         viewModelScope.launch {
             _historicalDataViewState.value.let { state ->
                 _historicalDataViewState.value = state.copy(isLoading = true)
-                historicalDataUseCase.invoke(startDate, endDate).collect {
+                historicalDataUseCase.invoke(startDate, endDate, from, to).collect {
                     when (it) {
                         is Result.Success -> {
                             _historicalDataViewState.value =

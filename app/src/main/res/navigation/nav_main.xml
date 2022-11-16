@@ -11,4 +11,10 @@
         android:label="MainFragment"
         tools:layout="@layout/fragment_main"
         />
+    <fragment
+        android:id="@+id/detailDashboardFragment"
+        android:name="com.danzucker.currency.presentation.detail.DetailDashboardFragment"
+        android:label="DetailDashboardFragment"
+        tools:layout="@layout/fragment_detail_dashboard"
+        />
 </navigation>

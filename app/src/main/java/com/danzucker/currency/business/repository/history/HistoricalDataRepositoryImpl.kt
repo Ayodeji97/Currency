@@ -14,10 +14,13 @@ class HistoricalDataRepositoryImpl @Inject constructor(
 ) : HistoricalDataRepository {
     override suspend fun getHistoricalData(
         startDate: String,
-        endDate: String
+        endDate: String,
+        from: String,
+        to: String,
     ): Flow<Result<HistoricalData>> =
         flow {
-            when (val response = historicalDataRemoteSource.getHistoricalData(startDate, endDate)) {
+            when (val response =
+                historicalDataRemoteSource.getHistoricalData(startDate, endDate, from, to)) {
                 is Result.Success -> {
                     response.data?.let {
                         val historicalData = historicalDataDtoMapper.transformToDomain(it)
