@@ -3,6 +3,7 @@ package com.danzucker.currency.business.datasource.remote
 import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.datasource.remote.model.historical.HistoricalDataDto
 import com.danzucker.currency.business.datasource.remote.model.popular.PopularCurrenciesDto
+import com.danzucker.currency.business.datasource.remote.model.symbols.CurrencySymbolsDto
 import com.danzucker.currency.business.utils.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -10,6 +11,10 @@ import retrofit2.http.Headers
 import retrofit2.http.Query
 
 interface CurrencyApiService {
+
+    @Headers("apikey:$API_KEY")
+    @GET("symbols")
+    suspend fun getCurrencySymbols() : Response<CurrencySymbolsDto>
 
     @Headers("apikey:$API_KEY")
     @GET("convert")
