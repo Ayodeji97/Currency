@@ -12,6 +12,7 @@ object TestConstants {
     const val TEST_START_DATE = "2022-11-16"
     const val TEST_END_DATE = "2022-11-18"
     const val FROM = "EUR"
+    const val BASE = "EUR"
     const val TO = "NGN"
     const val SYMBOLS = "GBP, AFN, AMD, NGN"
     const val TEST_RESULT = 4602.80484

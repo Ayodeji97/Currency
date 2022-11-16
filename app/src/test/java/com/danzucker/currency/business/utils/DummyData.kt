@@ -10,6 +10,9 @@ import com.danzucker.currency.business.datasource.remote.model.symbols.CurrencyS
 
 object DummyData {
 
+    val error_text = "Exception thrown"
+    val exception = Exception(error_text)
+
     val info = InfoDto(
         rate = 2.3553,
         timestamp = 23525235
