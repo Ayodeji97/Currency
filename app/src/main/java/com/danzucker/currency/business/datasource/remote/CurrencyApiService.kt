@@ -2,6 +2,7 @@ package com.danzucker.currency.business.datasource.remote
 
 import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.datasource.remote.model.historical.HistoricalDataDto
+import com.danzucker.currency.business.datasource.remote.model.popular.PopularCurrencyDto
 import com.danzucker.currency.business.utils.Constants.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
@@ -27,4 +28,12 @@ interface CurrencyApiService {
         @Query("base") from: String,
         @Query("symbols") to: String,
     ) : Response<HistoricalDataDto>
+
+    @Headers("apikey:$API_KEY")
+    @GET("latest")
+    suspend fun getPopularCurrencies (
+        @Query("base") base: String,
+        @Query("symbols") symbols: String,
+    ) : Response<PopularCurrencyDto>
+
 }

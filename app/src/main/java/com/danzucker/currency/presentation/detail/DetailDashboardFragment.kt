@@ -52,6 +52,7 @@ class DetailDashboardFragment : Fragment() {
             detailViewModel.historicalDataViewState.collectLatest {state->
                 if (state.error != "") {
                     Toast.makeText(requireContext(), "Error :${state.error}", Toast.LENGTH_LONG).show()
+                    Log.i("IPPPO11", "DDD: ${state.error}")
                 } else {
                     state.historicalData?.let {
                         Toast.makeText(requireContext(), "Success :${state.historicalData}", Toast.LENGTH_LONG).show()
