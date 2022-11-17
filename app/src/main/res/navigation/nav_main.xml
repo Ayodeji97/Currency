@@ -10,11 +10,32 @@
         android:name="com.danzucker.currency.presentation.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main"
-        />
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_detailDashboardFragment"
+            app:destination="@id/detailDashboardFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailDashboardFragment"
         android:name="com.danzucker.currency.presentation.detail.DetailDashboardFragment"
         android:label="DetailDashboardFragment"
         tools:layout="@layout/fragment_detail_dashboard"
-        />
+        >
+        <argument
+            android:name="base"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="target"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="currentDate"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="lastThreeDaysDate"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 </navigation>

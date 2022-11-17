@@ -1,19 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/margin_40"
+        android:layout_height="@dimen/margin_40"
+        android:backgroundTint="@color/primary_color"
+        android:progressBackgroundTint="@color/primary_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/fragment_main_heading_tv"
         style="@style/HeadingTextAppearance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_15"
-        android:layout_marginTop="@dimen/margin_15"
-        android:text="@string/company_info_str"
+        android:layout_marginTop="136dp"
+        android:text="@string/convert_currency_str"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/fragment_main_from_tv"
+        style="@style/PlaceholderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="18dp"
+        android:text="FROM"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_main_heading_tv" />
+
+
+    <ImageView
+        android:id="@+id/swap_action_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        android:src="@drawable/ic_swap_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_edit_profile_residential_state_tl"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_edit_profile_residential_lga_tl"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toEndOf="@+id/fragment_edit_profile_residential_state_tl"
+        app:layout_constraintTop_toTopOf="@+id/fragment_edit_profile_residential_state_tl"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_edit_profile_residential_state_tl"
+        style="@style/TextFieldTextLayoutSpinnerStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_40"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_edit_profile_residential_lga_tl"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_main_from_tv">
+
+        <AutoCompleteTextView
+            android:id="@+id/base_currency_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dropDownAnchor="@+id/fragment_edit_profile_residential_state_tl"
+            android:hint="Select"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_state"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="5dp"
+        android:elevation="5dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_edit_profile_residential_state_tl"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_edit_profile_residential_state_tl" />
+
+
+    <TextView
+        android:id="@+id/fragment_main_to_tv"
+        style="@style/PlaceholderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_15"
+        android:text="TO"
+        app:layout_constraintStart_toStartOf="@+id/fragment_edit_profile_residential_lga_tl"
+        app:layout_constraintTop_toTopOf="@+id/fragment_main_from_tv" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_edit_profile_residential_lga_tl"
+        style="@style/TextFieldTextLayoutSpinnerStyle"
+        android:layout_width="0dp"
+        android:layout_marginStart="@dimen/margin_40"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_edit_profile_residential_state_tl"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_main_to_tv">
+
+        <AutoCompleteTextView
+            android:id="@+id/target_currency_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:dropDownAnchor="@+id/fragment_edit_profile_residential_lga_tl"
+            android:hint="Select"
+            android:inputType="none" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar_lga"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginTop="5dp"
+        android:elevation="5dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_edit_profile_residential_lga_tl"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_edit_profile_residential_lga_tl" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_register_first_name_tl"
+        style="@style/TextFieldTextLayoutStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_register_last_name_tl"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_edit_profile_residential_lga_tl">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_main_amount_et"
+            style="@style/TextFieldTextInputEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="@string/default_one" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_register_last_name_tl"
+        style="@style/TextFieldTextLayoutStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/fragment_register_first_name_tl"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_edit_profile_residential_lga_tl">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/convert_rate_et"
+            style="@style/TextFieldTextInputEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:inputType="text" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/show_details_next_btn"
+        style="@style/GeneralLightTextAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_60"
+        android:backgroundTint="@color/primary_color"
+        android:elevation="0dp"
+        android:paddingLeft="50dp"
+        android:paddingTop="16dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="16dp"
+        android:text="Details"
+        android:textAllCaps="false"
+        android:textColor="@color/background_entire"
+        app:cornerRadius="10dp"
+        app:elevation="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_register_last_name_tl"
+        app:layout_constraintStart_toStartOf="@+id/fragment_register_first_name_tl"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_register_first_name_tl" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

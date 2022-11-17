@@ -24,4 +24,8 @@
     <color name="beneficiary_text_color">#002766</color>
     <color name="transparent_text_color">#8491AB</color>
 
+    <color name="spend_dashboard_tab_layout_background">#ECEEF4</color>
+
+    <color name="error_bg_color">#FFEBEE</color>
+
 </resources>
