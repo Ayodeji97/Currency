@@ -1,7 +1,7 @@
 # Currency App
 
 Hey there 👋🏼👋🏼👋🏼 !
-StarWars App is a simple android application developed to demonstrate clean architectural guidelines with MVI android architecture.
+Currency App is a simple android application developed to demonstrate clean architectural guidelines with MVI android architecture.
 
 _Note: Currency App data source is from star wars api and not cache implement.
 See API Documentation [Here]("https://fixer.io/documentation")_
