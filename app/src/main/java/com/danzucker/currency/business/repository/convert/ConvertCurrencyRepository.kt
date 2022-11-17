@@ -5,7 +5,9 @@ import com.danzucker.currency.business.utils.Result
 import kotlinx.coroutines.flow.Flow
 
 interface ConvertCurrencyRepository {
-    suspend fun convertCurrency(from: String,
-                                    to: String,
-                                    amount: String) : Flow<Result<ConvertCurrency>>
+    suspend fun convertCurrency(
+        from: String,
+        to: String,
+        amount: String
+    ): Flow<Result<ConvertCurrency>>
 }

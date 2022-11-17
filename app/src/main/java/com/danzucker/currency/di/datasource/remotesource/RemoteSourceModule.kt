@@ -36,5 +36,4 @@ abstract class RemoteSourceModule {
     abstract fun provideCurrencySymbolsRemoteSource(
         currencySymbolsRemoteSourceImpl: CurrencySymbolsRemoteSourceImpl
     ): CurrencySymbolsRemoteSource
-
 }

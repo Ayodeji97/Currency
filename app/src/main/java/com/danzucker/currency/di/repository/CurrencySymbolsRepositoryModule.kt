@@ -15,5 +15,4 @@ abstract class CurrencySymbolsRepositoryModule {
     abstract fun provideCurrencySymbolsDataRepository(
         currencySymbolsRepositoryImpl: CurrencySymbolsRepositoryImpl
     ): CurrencySymbolsRepository
-
 }

@@ -10,13 +10,12 @@ import com.google.common.truth.Truth.assertThat
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
 
 class ConvertCurrencyRepositoryTest {
 
-    private lateinit var convertCurrencyRemoteSource : ConvertCurrencyRemoteSource
+    private lateinit var convertCurrencyRemoteSource: ConvertCurrencyRemoteSource
 
     @Before
     fun setup() {
@@ -29,7 +28,7 @@ class ConvertCurrencyRepositoryTest {
             Result.Success(DummyData.convertCurrentDto)
         )
 
-        when(val response = convertCurrencyRemoteSource.convertCurrency(FROM, TO, TEST_AMOUNT)) {
+        when (val response = convertCurrencyRemoteSource.convertCurrency(FROM, TO, TEST_AMOUNT)) {
             is Result.Success -> {
                 assertThat(response.data?.result).isNotNull()
                 assertThat(response.data?.result).isEqualTo(DummyData.convertCurrentDto.result)
@@ -37,8 +36,6 @@ class ConvertCurrencyRepositoryTest {
             is Result.Error -> {}
         }
     }
-
-
 
     @Test
     fun `check that calling convert currency return an exception when there is an error`() =
@@ -55,5 +52,4 @@ class ConvertCurrencyRepositoryTest {
                 else -> {}
             }
         }
-
 }

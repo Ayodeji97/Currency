@@ -1,6 +1,5 @@
 package com.danzucker.currency.business.repository.popular
 
-import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSource
 import com.danzucker.currency.business.datasource.remote.remotesource.popular.PopularCurrenciesRemoteSource
 import com.danzucker.currency.business.utils.DummyData
 import com.danzucker.currency.business.utils.Result
@@ -10,8 +9,8 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
 
 class PopularCurrenciesRepositoryTest {
 
@@ -26,10 +25,10 @@ class PopularCurrenciesRepositoryTest {
     fun `check that calling get popular currencies return converted value`(): Unit = runBlocking {
         Mockito.`when`(popularCurrenciesRemoteSource.getPopularCurrencies(TestConstants.BASE, TestConstants.SYMBOLS))
             .thenReturn(
-            Result.Success(DummyData.popularCurrenciesDto)
-        )
+                Result.Success(DummyData.popularCurrenciesDto)
+            )
 
-        when(val response = popularCurrenciesRemoteSource.getPopularCurrencies(TestConstants.BASE, TestConstants.SYMBOLS)) {
+        when (val response = popularCurrenciesRemoteSource.getPopularCurrencies(TestConstants.BASE, TestConstants.SYMBOLS)) {
             is Result.Success -> {
                 Truth.assertThat(response.data?.base).isNotNull()
                 Truth.assertThat(response.data?.date).isEqualTo(DummyData.popularCurrenciesDto.date)
@@ -55,5 +54,4 @@ class PopularCurrenciesRepositoryTest {
                 else -> {}
             }
         }
-
 }

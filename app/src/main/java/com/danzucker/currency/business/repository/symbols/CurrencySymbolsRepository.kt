@@ -6,6 +6,6 @@ import com.danzucker.currency.business.utils.Result
 import kotlinx.coroutines.flow.Flow
 
 interface CurrencySymbolsRepository {
-    suspend fun getCurrencySymbols () : Flow<Result<CurrencySymbols>>
-    fun getCurrencySymbolsFromDb () : Flow<CurrencySymbolsEntity?>
+    suspend fun getCurrencySymbols(): Flow<Result<CurrencySymbols>>
+    fun getCurrencySymbolsFromDb(): Flow<CurrencySymbolsEntity?>
 }

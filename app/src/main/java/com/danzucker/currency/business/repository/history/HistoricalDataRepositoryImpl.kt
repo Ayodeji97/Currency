@@ -19,8 +19,10 @@ class HistoricalDataRepositoryImpl @Inject constructor(
         to: String,
     ): Flow<Result<HistoricalData>> =
         flow {
-            when (val response =
-                historicalDataRemoteSource.getHistoricalData(startDate, endDate, from, to)) {
+            when (
+                val response =
+                    historicalDataRemoteSource.getHistoricalData(startDate, endDate, from, to)
+            ) {
                 is Result.Success -> {
                     response.data?.let {
                         val historicalData = historicalDataDtoMapper.transformToDomain(it)

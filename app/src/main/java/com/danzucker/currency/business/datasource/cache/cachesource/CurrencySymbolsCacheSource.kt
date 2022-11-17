@@ -2,7 +2,6 @@ package com.danzucker.currency.business.datasource.cache.cachesource
 
 import com.danzucker.currency.business.datasource.cache.dao.CurrencySymbolsDao
 import com.danzucker.currency.business.datasource.cache.model.CurrencySymbolsEntity
-import com.danzucker.currency.business.utils.Result
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 

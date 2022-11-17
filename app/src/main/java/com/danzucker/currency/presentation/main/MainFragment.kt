@@ -1,18 +1,15 @@
 package com.danzucker.currency.presentation.main
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.danzucker.currency.R
 import com.danzucker.currency.databinding.FragmentMainBinding
 import com.danzucker.currency.presentation.utils.*
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,7 +49,7 @@ class MainFragment : Fragment() {
         baseSelectedItem()
         targetSelectedItem()
 
-        convertCurrency ()
+        convertCurrency()
 
         convertedCurrencySubscriber()
 
@@ -71,7 +68,6 @@ class MainFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
-
     }
 
     private fun convertCurrency() {
@@ -108,11 +104,9 @@ class MainFragment : Fragment() {
                         }
                     }
                 }
-
             }
         }
     }
-
 
     private fun getCurrencySymbolSubscriber() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
@@ -132,7 +126,6 @@ class MainFragment : Fragment() {
             }
         }
     }
-
 
     private fun baseSelectedItem() {
         ui.baseCurrencySpinner.onItemClickListener =
@@ -171,15 +164,12 @@ class MainFragment : Fragment() {
                 baseSelectedItem = targetCurrencySpinner.text.toString()
                 targetSelectedItem = baseCurrencySpinner.text.toString()
                 getConvertedCurrency()
-
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
         currentBinding = null
     }
-
 }

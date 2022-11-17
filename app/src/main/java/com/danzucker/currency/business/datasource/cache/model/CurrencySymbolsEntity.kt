@@ -12,13 +12,12 @@ data class CurrencySymbolsEntity(
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id : Int,
-
+    val id: Int,
 
 //    @ColumnInfo(name = "symbols")
 //    val symbols : HashMap<String, String>? = null
     @TypeConverters(Converters::class)
     @ColumnInfo(name = "symbols")
-    val symbols : List<String>
+    val symbols: List<String>
 
 )

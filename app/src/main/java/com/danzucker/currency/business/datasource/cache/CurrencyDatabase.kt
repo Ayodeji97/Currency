@@ -2,7 +2,6 @@ package com.danzucker.currency.business.datasource.cache
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import com.danzucker.currency.business.datasource.cache.dao.CurrencySymbolsDao
 import com.danzucker.currency.business.datasource.cache.model.CurrencySymbolsEntity

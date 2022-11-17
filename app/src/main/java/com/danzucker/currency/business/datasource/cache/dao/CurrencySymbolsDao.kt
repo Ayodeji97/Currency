@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.danzucker.currency.business.datasource.cache.model.CurrencySymbolsEntity
-import com.danzucker.currency.business.utils.Result
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -15,6 +14,5 @@ interface CurrencySymbolsDao {
     suspend fun insert(currencySymbolsEntity: CurrencySymbolsEntity)
 
     @Query("SELECT * FROM currency_table")
-    fun getCurrencySymbols() : Flow<CurrencySymbolsEntity?>
-
+    fun getCurrencySymbols(): Flow<CurrencySymbolsEntity?>
 }

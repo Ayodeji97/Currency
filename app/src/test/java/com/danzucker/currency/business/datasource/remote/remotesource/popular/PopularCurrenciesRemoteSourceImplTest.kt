@@ -1,15 +1,11 @@
 package com.danzucker.currency.business.datasource.remote.remotesource.popular
 
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
-import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSource
-import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSourceImpl
 import com.danzucker.currency.business.utils.MainCoroutineRule
 import com.danzucker.currency.business.utils.TestConstants
 import com.danzucker.currency.business.utils.TestConstants.FROM
 import com.danzucker.currency.business.utils.TestConstants.POPULAR_CURRENCIES
 import com.danzucker.currency.business.utils.TestConstants.SYMBOLS
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
@@ -52,7 +48,6 @@ class PopularCurrenciesRemoteSourceImplTest {
 
         popularCurrenciesRemoteSource =
             PopularCurrenciesRemoteSourceImpl(currencyApiService, Dispatchers.Main)
-
     }
 
     private fun enqueueMockResponse(fileName: String) {
@@ -83,7 +78,7 @@ class PopularCurrenciesRemoteSourceImplTest {
     fun `check that getPopularCurrencies method does not return null`() = runBlocking {
         enqueueMockResponse(POPULAR_CURRENCIES)
         val response = currencyApiService.getPopularCurrencies(
-        FROM, SYMBOLS
+            FROM, SYMBOLS
         ).body()
         assertThat(response).isNotNull()
     }

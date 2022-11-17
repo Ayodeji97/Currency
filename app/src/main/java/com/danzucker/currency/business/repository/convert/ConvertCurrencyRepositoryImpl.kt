@@ -30,5 +30,4 @@ class ConvertCurrencyRepositoryImpl @Inject constructor(
                 }
             }
         }
-
 }

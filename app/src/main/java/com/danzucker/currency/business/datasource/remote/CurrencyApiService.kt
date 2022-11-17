@@ -1,5 +1,6 @@
 package com.danzucker.currency.business.datasource.remote
 
+import com.danzucker.currency.BuildConfig
 import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.datasource.remote.model.historical.HistoricalDataDto
 import com.danzucker.currency.business.datasource.remote.model.popular.PopularCurrenciesDto
@@ -14,7 +15,7 @@ interface CurrencyApiService {
 
     @Headers("apikey:$API_KEY")
     @GET("symbols")
-    suspend fun getCurrencySymbols() : Response<CurrencySymbolsDto>
+    suspend fun getCurrencySymbols(): Response<CurrencySymbolsDto>
 
     @Headers("apikey:$API_KEY")
     @GET("convert")
@@ -22,8 +23,7 @@ interface CurrencyApiService {
         @Query("from") from: String,
         @Query("to") to: String,
         @Query("amount") amount: String,
-    ) : Response<ConvertCurrencyDto>
-
+    ): Response<ConvertCurrencyDto>
 
     @Headers("apikey:$API_KEY")
     @GET("timeseries")
@@ -32,13 +32,12 @@ interface CurrencyApiService {
         @Query("end_date") endDate: String,
         @Query("base") from: String,
         @Query("symbols") to: String,
-    ) : Response<HistoricalDataDto>
+    ): Response<HistoricalDataDto>
 
     @Headers("apikey:$API_KEY")
     @GET("latest")
-    suspend fun getPopularCurrencies (
+    suspend fun getPopularCurrencies(
         @Query("base") base: String,
         @Query("symbols") symbols: String,
-    ) : Response<PopularCurrenciesDto>
-
+    ): Response<PopularCurrenciesDto>
 }

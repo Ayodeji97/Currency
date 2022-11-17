@@ -1,17 +1,14 @@
 package com.danzucker.currency.business.repository.symbols
 
-import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSource
 import com.danzucker.currency.business.datasource.remote.remotesource.symbols.CurrencySymbolsRemoteSource
 import com.danzucker.currency.business.utils.DummyData
 import com.danzucker.currency.business.utils.Result
-import com.danzucker.currency.business.utils.TestConstants
 import com.google.common.truth.Truth
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mockito
-import org.mockito.Mockito.`when`
 import org.mockito.Mockito.mock
+import org.mockito.Mockito.`when`
 
 class CurrencySymbolsRepositoryTest {
 
@@ -24,12 +21,12 @@ class CurrencySymbolsRepositoryTest {
 
     @Test
     fun `check that calling convert currency return converted value`(): Unit = runBlocking {
-       `when`(currencySymbolsRemoteSource.getCurrencySymbols())
+        `when`(currencySymbolsRemoteSource.getCurrencySymbols())
             .thenReturn(
-            Result.Success(DummyData.currencySymbolDto)
-        )
+                Result.Success(DummyData.currencySymbolDto)
+            )
 
-        when(val response = currencySymbolsRemoteSource.getCurrencySymbols()) {
+        when (val response = currencySymbolsRemoteSource.getCurrencySymbols()) {
             is Result.Success -> {
                 Truth.assertThat(response.data?.success).isTrue()
             }
@@ -40,8 +37,8 @@ class CurrencySymbolsRepositoryTest {
     @Test
     fun `check that calling convert currency return an exception when there is an error`() =
         runBlocking {
-          `when`(
-              currencySymbolsRemoteSource.getCurrencySymbols()
+            `when`(
+                currencySymbolsRemoteSource.getCurrencySymbols()
             ).thenReturn(
                 Result.Error(DummyData.exception.message ?: "")
             )
@@ -54,5 +51,4 @@ class CurrencySymbolsRepositoryTest {
                 else -> {}
             }
         }
-
 }

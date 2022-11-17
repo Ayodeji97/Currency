@@ -1,7 +1,5 @@
 package com.danzucker.currency.business.domain.model.history
 
-import com.google.gson.annotations.SerializedName
-
 data class HistoricalData(
     val base: String,
 

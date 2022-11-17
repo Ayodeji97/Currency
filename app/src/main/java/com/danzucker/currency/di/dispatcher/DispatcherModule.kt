@@ -1,6 +1,5 @@
 package com.danzucker.currency.di.dispatcher
 
-
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -53,7 +53,6 @@ object DummyData {
         success = true
     )
 
-
     val convertSymbolDto2 = ConvertCurrencyDto(
         date = "2022-02-09",
         info = info,
@@ -100,9 +99,4 @@ object DummyData {
         id = 3,
         symbols = listOf("NGN", "DRT")
     )
-
-
-
-
-
 }

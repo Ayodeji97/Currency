@@ -15,5 +15,4 @@ class PopularCurrenciesUseCase @Inject constructor(
         symbols: String
     ): Flow<Result<PopularCurrencies>> =
         popularCurrenciesRepository.getPopularCurrencies(base, symbols)
-
 }

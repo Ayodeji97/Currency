@@ -31,4 +31,3 @@ data class Query(
     @SerializedName("to")
     val to: String,
 )
-

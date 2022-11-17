@@ -17,17 +17,16 @@ class CurrencySymbolEntityMapperTest {
     }
 
     @Test
-    fun `map remote data against domain data returns data are correctly mapped` () = runTest {
+    fun `map remote data against domain data returns data are correctly mapped`() = runTest {
         val currencySymbolDto = DummyData.currencySymbolDto
         val mapperToDomain = currencySymbolsEntityMapper.transformToEntity(currencySymbolDto)
         Truth.assertThat(mapperToDomain.symbols.first()).isEqualTo(currencySymbolDto.symbols?.keys?.first())
     }
 
     @Test
-    fun `map remote data against domain data returns data are incorrectly mapped` () = runTest {
+    fun `map remote data against domain data returns data are incorrectly mapped`() = runTest {
         val currencySymbolDto = DummyData.currencySymbolDto
         val mapperToDomain = currencySymbolsEntityMapper.transformToEntity(currencySymbolDto)
         Truth.assertThat(DummyData.currencySymbolsEntity.symbols.last()).isNotEqualTo(mapperToDomain.symbols.last())
     }
-
 }

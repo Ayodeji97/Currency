@@ -42,7 +42,6 @@ class PopularCurrenciesViewModel @Inject constructor(
                         }
                     }
                 }
-
             }
         }
     }

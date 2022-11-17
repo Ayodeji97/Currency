@@ -2,7 +2,6 @@ package com.danzucker.currency.business.utils.mapper.cachemapper
 
 import com.danzucker.currency.business.datasource.cache.model.CurrencySymbolsEntity
 import com.danzucker.currency.business.datasource.remote.model.symbols.CurrencySymbolsDto
-import com.danzucker.currency.business.utils.mapper.base.BaseDtoMapper
 import com.danzucker.currency.business.utils.mapper.base.BaseEntityMapper
 import javax.inject.Inject
 

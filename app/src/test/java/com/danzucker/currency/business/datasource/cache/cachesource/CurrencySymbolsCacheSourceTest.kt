@@ -32,7 +32,6 @@ class CurrencySymbolsCacheSourceTest {
         ).allowMainThreadQueries().build()
 
         currencySymbolsDao = currencyDb.currencySymbolDao()
-
     }
 
     @Test

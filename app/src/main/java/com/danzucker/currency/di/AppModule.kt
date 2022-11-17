@@ -27,7 +27,6 @@ object AppModule {
             .create()
     }
 
-
     @Provides
     @Singleton
     fun provideLogger(): HttpLoggingInterceptor {
@@ -36,7 +35,6 @@ object AppModule {
             HttpLoggingInterceptor.Level.NONE
         )
     }
-
 
     @Provides
     @Singleton
@@ -50,7 +48,6 @@ object AppModule {
             .addInterceptor(logger)
             .build()
     }
-
 
     @Singleton
     @Provides

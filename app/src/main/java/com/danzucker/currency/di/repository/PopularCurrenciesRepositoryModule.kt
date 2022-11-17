@@ -15,5 +15,4 @@ abstract class PopularCurrenciesRepositoryModule {
     abstract fun providePopularCurrenciesRepository(
         popularCurrenciesRepositoryImpl: PopularCurrenciesRepositoryImpl
     ): PopularCurrenciesRepository
-
 }

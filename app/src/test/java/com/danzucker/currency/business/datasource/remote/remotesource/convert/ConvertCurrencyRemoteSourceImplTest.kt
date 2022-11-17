@@ -10,7 +10,6 @@ import com.danzucker.currency.business.utils.TestConstants.TEST_RATE
 import com.danzucker.currency.business.utils.TestConstants.TEST_RESULT
 import com.danzucker.currency.business.utils.TestConstants.TEST_TIME_STAMP
 import com.danzucker.currency.business.utils.TestConstants.TO
-import com.google.common.truth.Truth
 import com.google.common.truth.Truth.assertThat
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.Dispatchers
@@ -82,7 +81,7 @@ class ConvertCurrencyRemoteSourceImplTest {
     @Test
     fun `check that convertCurrency method does not return null`() = runBlocking {
         enqueueMockResponse(CONVERT_CURRENCY)
-        val response : ConvertCurrencyDto? = currencyApiService.convertCurrency(FROM, TO, TEST_AMOUNT).body()
+        val response: ConvertCurrencyDto? = currencyApiService.convertCurrency(FROM, TO, TEST_AMOUNT).body()
         assertThat(response).isNotNull()
     }
 
@@ -96,5 +95,4 @@ class ConvertCurrencyRemoteSourceImplTest {
             assertThat(response?.info?.rate).isEqualTo(TEST_RATE)
             assertThat(response?.info?.timestamp).isEqualTo(TEST_TIME_STAMP)
         }
-
 }

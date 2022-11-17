@@ -12,5 +12,4 @@ class CurrencySymbolsUseCase @Inject constructor(
 
     suspend operator fun invoke(): Flow<Result<CurrencySymbols>> =
         currencySymbolsRepository.getCurrencySymbols()
-
 }

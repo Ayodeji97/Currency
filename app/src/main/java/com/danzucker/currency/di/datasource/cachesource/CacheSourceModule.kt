@@ -23,7 +23,6 @@ object CacheSourceModule {
             .fallbackToDestructiveMigration() // get correct db version if schema changed
             .build()
 
-
     @Singleton
     @Provides
     fun provideCurrencySymbolsDao(currencyDatabase: CurrencyDatabase): CurrencySymbolsDao =

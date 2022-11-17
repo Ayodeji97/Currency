@@ -21,5 +21,3 @@ data class HistoricalDataDto(
     @SerializedName("timeseries")
     val timeSeries: Boolean? = null,
 )
-
-

@@ -18,14 +18,14 @@ class CurrencySymbolsDtoMapperTest {
     }
 
     @Test
-    fun `map remote data against domain data returns data are correctly mapped` () = runTest {
+    fun `map remote data against domain data returns data are correctly mapped`() = runTest {
         val convertSymbolDto = DummyData.convertSymbolDto
         val mapperToDomain = currencySymbolDtoMapper.transformToDomain(convertSymbolDto)
         Truth.assertThat(mapperToDomain.rate).isEqualTo(convertCurrentDto.info?.rate)
     }
 
     @Test
-    fun `map remote data against domain data returns data are incorrectly mapped` () = runTest {
+    fun `map remote data against domain data returns data are incorrectly mapped`() = runTest {
         val convertSymbolDto = DummyData.convertSymbolDto
         val mapperToDomain = currencySymbolDtoMapper.transformToDomain(convertSymbolDto)
         Truth.assertThat(DummyData.convertSymbolDto2.date).isNotEqualTo(mapperToDomain.date)

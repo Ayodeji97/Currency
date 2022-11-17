@@ -1,6 +1,5 @@
 package com.danzucker.currency.presentation.detail.popular
 
-import com.danzucker.currency.business.domain.model.history.HistoricalData
 import com.danzucker.currency.business.domain.model.popular.PopularCurrencies
 
 data class PopularCurrenciesViewState(

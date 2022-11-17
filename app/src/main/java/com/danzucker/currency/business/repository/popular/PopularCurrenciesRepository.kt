@@ -9,5 +9,5 @@ interface PopularCurrenciesRepository {
     suspend fun getPopularCurrencies(
         base: String,
         symbols: String
-    ) : Flow<Result<PopularCurrencies>>
+    ): Flow<Result<PopularCurrencies>>
 }

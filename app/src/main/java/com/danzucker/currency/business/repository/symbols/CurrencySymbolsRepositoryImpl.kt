@@ -42,5 +42,4 @@ class CurrencySymbolsRepositoryImpl @Inject constructor(
 
     override fun getCurrencySymbolsFromDb(): Flow<CurrencySymbolsEntity?> =
         currencySymbolsCacheSource.getCurrencySymbols()
-
 }

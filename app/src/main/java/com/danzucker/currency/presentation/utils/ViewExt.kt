@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment
 import com.danzucker.currency.R
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
-import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -29,21 +28,19 @@ fun Fragment.showErrorSnackBar(view: View, message: String) {
         }.show()
 }
 
-fun Fragment.showSnackBar (view : View, message : String) {
+fun Fragment.showSnackBar(view: View, message: String) {
     Snackbar.make(
         view,
         message,
         Snackbar.LENGTH_LONG
     ).setAction("ok") {
-
     }.show()
 }
 
-fun Fragment.populateSpinner (context : Context, view : View, list: List<String>) {
+fun Fragment.populateSpinner(context: Context, view: View, list: List<String>) {
     val arrayAdapter = ArrayAdapter(context, R.layout.spinner_list_item, list)
     view.findViewById<MaterialAutoCompleteTextView>(view.id).setAdapter(arrayAdapter)
 }
-
 
 fun EditText.afterTextChangedDelayed(afterTextChanged: (String) -> Unit) {
     this.addTextChangedListener(object : TextWatcher {
@@ -65,34 +62,31 @@ fun EditText.afterTextChangedDelayed(afterTextChanged: (String) -> Unit) {
     })
 }
 
-fun Fragment.enableButtonValidation (editText: EditText,
-                                            button: Button
+fun Fragment.enableButtonValidation(
+    editText: EditText,
+    button: Button
 ) {
-
     editText.afterTextChangedDelayed {
         button.isEnabled = it.isNotEmpty()
     }
 }
 
-
-fun Fragment.getDate(cal: Calendar) : String {
+fun Fragment.getDate(cal: Calendar): String {
     return "${cal[Calendar.YEAR]}-${cal[Calendar.MONTH] + 1}-${cal[Calendar.DATE]}"
 }
 
-fun Fragment.getCurrentDate () : String {
+fun Fragment.getCurrentDate(): String {
     val calender = Calendar.getInstance()
     calender.timeZone = TimeZone.getTimeZone("UTC+1")
 
-    return  getDate(calender)
-
+    return getDate(calender)
 }
 
 @SuppressLint("SimpleDateFormat")
-fun Fragment.getThreeDaysAgo () : String {
+fun Fragment.getThreeDaysAgo(): String {
     val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     val calender = Calendar.getInstance()
     simpleDateFormat.format(calender.time)
     calender.add(Calendar.DATE, -2)
     return getDate(calender)
-
 }

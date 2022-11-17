@@ -17,18 +17,16 @@ class PopularCurrenciesDtoMapperTest {
     }
 
     @Test
-    fun `map remote data against domain data returns data are correctly mapped` () = runTest {
+    fun `map remote data against domain data returns data are correctly mapped`() = runTest {
         val popularCurrenciesDto = DummyData.popularCurrenciesDto
         val mapperToDomain = popularCurrenciesDtoMapper.transformToDomain(popularCurrenciesDto)
         Truth.assertThat(mapperToDomain.date).isEqualTo(popularCurrenciesDto.date)
     }
 
     @Test
-    fun `map remote data against domain data returns data are incorrectly mapped` () = runTest {
+    fun `map remote data against domain data returns data are incorrectly mapped`() = runTest {
         val popularCurrenciesDto = DummyData.popularCurrenciesDto
         val mapperToDomain = popularCurrenciesDtoMapper.transformToDomain(popularCurrenciesDto)
         Truth.assertThat(DummyData.popularCurrenciesDto2.date).isNotEqualTo(mapperToDomain.date)
     }
-
-
 }

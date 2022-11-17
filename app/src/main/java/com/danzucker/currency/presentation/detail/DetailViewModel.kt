@@ -8,9 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-
 import javax.inject.Inject
-
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
@@ -20,18 +18,22 @@ class DetailViewModel @Inject constructor(
     private var _historicalDataViewState = MutableStateFlow(DetailViewState())
     val historicalDataViewState = _historicalDataViewState.asStateFlow()
 
-
     fun onTriggeredEvent(event: DetailViewEvent) {
         when (event) {
             is DetailViewEvent.GetHistoricalCurrencyData ->
-                getHistoricalCurrencyData(event.startDate, event.endDate,
-                event.from, event.to)
+                getHistoricalCurrencyData(
+                    event.startDate, event.endDate,
+                    event.from, event.to
+                )
         }
     }
 
-    private fun getHistoricalCurrencyData(startDate: String, endDate: String,
-                                          from: String,
-                                          to: String,) {
+    private fun getHistoricalCurrencyData(
+        startDate: String,
+        endDate: String,
+        from: String,
+        to: String,
+    ) {
         viewModelScope.launch {
             _historicalDataViewState.value.let { state ->
                 _historicalDataViewState.value = state.copy(isLoading = true)
@@ -47,7 +49,6 @@ class DetailViewModel @Inject constructor(
                         }
                     }
                 }
-
             }
         }
     }

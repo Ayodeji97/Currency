@@ -1,9 +1,7 @@
 package com.danzucker.currency.business.datasource.remote.remotesource.history
 
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
 import com.danzucker.currency.business.utils.MainCoroutineRule
-import com.danzucker.currency.business.utils.TestConstants
 import com.danzucker.currency.business.utils.TestConstants.FROM
 import com.danzucker.currency.business.utils.TestConstants.HISTORICAL_DATA
 import com.danzucker.currency.business.utils.TestConstants.TEST_END_DATE
@@ -54,7 +52,6 @@ class HistoricalDataRemoteSourceImplTest {
             HistoricalDataRemoteSourceImpl(currencyApiService, Dispatchers.Main)
     }
 
-
     private fun enqueueMockResponse(fileName: String) {
         javaClass.classLoader?.let {
             val inputStream = it.getResourceAsStream(fileName)
@@ -88,7 +85,6 @@ class HistoricalDataRemoteSourceImplTest {
         assertThat(response).isNotNull()
     }
 
-
     @Test
     fun `check that getCompanyInfo method return at least a corresponding correct data`() =
         runBlocking {
@@ -100,6 +96,4 @@ class HistoricalDataRemoteSourceImplTest {
             assertThat(response?.base).isEqualTo(FROM)
             assertThat(response?.startDate).isEqualTo(TEST_START_DATE)
         }
-
-
 }

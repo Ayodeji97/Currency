@@ -1,9 +1,6 @@
 package com.danzucker.currency.business.datasource.remote.remotesource.symbols
 
 import com.danzucker.currency.business.datasource.remote.CurrencyApiService
-import com.danzucker.currency.business.datasource.remote.model.convert.ConvertCurrencyDto
-import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSource
-import com.danzucker.currency.business.datasource.remote.remotesource.convert.ConvertCurrencyRemoteSourceImpl
 import com.danzucker.currency.business.utils.MainCoroutineRule
 import com.danzucker.currency.business.utils.TestConstants
 import com.google.common.truth.Truth
@@ -33,7 +30,6 @@ class CurrencySymbolsRemoteSourceImplTest {
     @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
-
 
     @Before
     fun setup() {
@@ -73,13 +69,10 @@ class CurrencySymbolsRemoteSourceImplTest {
         Truth.assertThat(responseSuccessful).isTrue()
     }
 
-
     @Test
     fun `check that getCurrencySymbols method does not return null`() = runBlocking {
         enqueueMockResponse(TestConstants.CONVERT_CURRENCY)
         val response = currencyApiService.getCurrencySymbols().body()
         Truth.assertThat(response).isNotNull()
     }
-
-
 }

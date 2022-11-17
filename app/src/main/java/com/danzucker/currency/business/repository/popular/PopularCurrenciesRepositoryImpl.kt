@@ -17,8 +17,10 @@ class PopularCurrenciesRepositoryImpl @Inject constructor(
         symbols: String
     ): Flow<Result<PopularCurrencies>> =
         flow {
-            when (val response =
-                popularCurrenciesRemoteSource.getPopularCurrencies(base, symbols)) {
+            when (
+                val response =
+                    popularCurrenciesRemoteSource.getPopularCurrencies(base, symbols)
+            ) {
                 is Result.Success -> {
                     response.data?.let {
                         val popularCurrencies = popularCurrenciesDtoMapper.transformToDomain(it)

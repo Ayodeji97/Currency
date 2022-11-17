@@ -25,6 +25,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+
 ext {
     // App dependencies
     appCompatVersion = "1.2.0"
