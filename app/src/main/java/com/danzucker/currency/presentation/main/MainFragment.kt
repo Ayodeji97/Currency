@@ -33,6 +33,8 @@ class MainFragment : Fragment() {
 
     private var currencySymbolList = listOf<String>()
 
+    private var baseAmount = ""
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,13 +52,13 @@ class MainFragment : Fragment() {
         baseSelectedItem()
         targetSelectedItem()
 
-        //convertCurrency ()
+        convertCurrency ()
 
         convertedCurrencySubscriber()
 
+        enableButtonValidation(ui.convertRateEt, ui.showDetailsNextBtn)
         ui.swapActionBtn.setOnClickListener {
             swapValues()
-            mainViewModel.onTriggeredEvent(MainViewEvent.GetCurrencySymbols)
         }
 
         ui.showDetailsNextBtn.setOnClickListener {
@@ -77,15 +79,13 @@ class MainFragment : Fragment() {
             val base = ui.baseCurrencySpinner.text.toString()
             val target = ui.targetCurrencySpinner.text.toString()
             if (base.isNotEmpty() && target.isNotEmpty()) {
-                // getConvertedCurrency()
+                getConvertedCurrency()
             }
         }
     }
 
     private fun getConvertedCurrency() {
         val amount = ui.fragmentMainAmountEt.text.toString()
-        Log.i("DDDD3", "$baseSelectedItem")
-        Log.i("DDDD4", "$targetSelectedItem")
         mainViewModel.onTriggeredEvent(
             MainViewEvent.GetConvertCurrencyData(
                 baseSelectedItem, targetSelectedItem, amount
@@ -104,9 +104,7 @@ class MainFragment : Fragment() {
                         state.convertCurrency?.let {
                             val result = it.result
                             ui.convertRateEt.setText(result.toString())
-                            ui.fragmentMainAmountEt.setText(
-                                it.amount.toString()
-                            )
+                            baseAmount = it.amount.toString()
                         }
                     }
                 }
@@ -143,7 +141,7 @@ class MainFragment : Fragment() {
                 baseSelectedItem = parent.getItemAtPosition(position).toString()
                 val target = ui.targetCurrencySpinner.text.toString()
                 if (target.isNotEmpty()) {
-                    //getConvertedCurrency()
+                    getConvertedCurrency()
                 }
             }
     }
@@ -155,23 +153,25 @@ class MainFragment : Fragment() {
                 targetItemPosition = parent.selectedItemPosition + 1
                 val base = ui.baseCurrencySpinner.text.toString()
                 if (base.isNotEmpty()) {
-                    //getConvertedCurrency()
+                    getConvertedCurrency()
                 }
             }
     }
 
     private fun swapValues() {
         ui.apply {
+            val baseSpinnerText = baseCurrencySpinner.text
             baseCurrencySpinner.text = targetCurrencySpinner.text
-            targetCurrencySpinner.text = baseCurrencySpinner.text
+            targetCurrencySpinner.text = baseSpinnerText
             populateSpinner(requireContext(), baseCurrencySpinner, currencySymbolList)
             populateSpinner(requireContext(), targetCurrencySpinner, currencySymbolList)
             targetCurrencySpinner.dismissDropDown()
             baseCurrencySpinner.dismissDropDown()
-            if (baseCurrencySpinner.text.isNotEmpty() && targetCurrencySpinner.text.isNotEmpty()) {
+            if (baseSpinnerText.isNotEmpty() && targetCurrencySpinner.text.isNotEmpty()) {
                 baseSelectedItem = targetCurrencySpinner.text.toString()
                 targetSelectedItem = baseCurrencySpinner.text.toString()
                 getConvertedCurrency()
+
             }
         }
     }

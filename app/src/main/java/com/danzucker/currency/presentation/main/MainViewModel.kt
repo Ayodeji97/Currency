@@ -32,8 +32,8 @@ class MainViewModel @Inject constructor(
         onTriggeredEvent(MainViewEvent.GetCurrencySymbols)
     }
 
-    fun onTriggeredEvent (event: MainViewEvent) {
-        when(event) {
+    fun onTriggeredEvent(event: MainViewEvent) {
+        when (event) {
             is MainViewEvent.GetConvertCurrencyData -> {
                 getConvertedCurrency(event.from, event.to, event.amount)
             }
@@ -69,13 +69,14 @@ class MainViewModel @Inject constructor(
 
     private fun getCurrencyFromDb() {
         viewModelScope.launch {
-            _currencySymbolViewState.value.let { state->
+            _currencySymbolViewState.value.let { state ->
                 currencySymbolsFromDbUseCase.getCurrencyFromDb().collect {
                     if (it != null) {
                         val currencySymbols = currencySymbolsDtoMapper.transformToDomain(it)
-                        _currencySymbolViewState.value = state.copy(currencySymbols = currencySymbols)
+                        _currencySymbolViewState.value =
+                            state.copy(currencySymbols = currencySymbols)
                     } else {
-                        getCurrencySymbols ()
+                        getCurrencySymbols()
                     }
                 }
 
@@ -83,17 +84,19 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun getCurrencySymbols () {
+    private fun getCurrencySymbols() {
         viewModelScope.launch {
-            _currencySymbolViewState.value.let { state->
+            _currencySymbolViewState.value.let { state ->
                 _currencySymbolViewState.value = state.copy(isLoading = true)
-                currencySymbolsUseCase.invoke().collect{
-                    when(it) {
+                currencySymbolsUseCase.invoke().collect {
+                    when (it) {
                         is Result.Success ->
-                            _currencySymbolViewState.value = state.copy(isLoading = false, currencySymbols = it.data)
+                            _currencySymbolViewState.value =
+                                state.copy(isLoading = false, currencySymbols = it.data)
 
                         is Result.Error ->
-                            _currencySymbolViewState.value = state.copy(isLoading = false, error = it.errorMessage)
+                            _currencySymbolViewState.value =
+                                state.copy(isLoading = false, error = it.errorMessage)
                     }
                 }
             }
