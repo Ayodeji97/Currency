@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Currency</string>
+    <string name="app_name">Currency App</string>
+    <string name="convert_currency_str">Convert Currency</string>
+    <string name="default_one">1</string>
+    <string name="currency_histories_str">Currency Histories</string>
+    <string name="popular_currencies_str">Popular Currencies</string>
+    <string name="select_str">Select</string>
+    <string name="chart_str">Chart</string>
+    <string name="details_str">Details</string>
 </resources>

@@ -7,4 +7,25 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="border_blue_stroke_color">#8FADF2</color>
+    <color name="border_blue_solid_color">#E3EBFC</color>
+
+    <color name="primary_color">#FF130F26</color>
+    <color name="background_entire">#FFF4F6FB</color>
+    <color name="dark_grayish_blue">#7D7D92</color>
+    <color name="biometric_bg_color">#EBEFF8</color>
+    <color name="border_stroke_color">#DBDBDB</color>
+    <color name="divider_color">#DDE2ED</color>
+    <color name="card_view_bg_color">#EBEFF8</color>
+    <color name="management_background_bg">#E1EFFF</color>
+    <color name="transparent_disable_button_color">#FFF4F6FB</color>
+    <color name="beneficiary_text_color">#002766</color>
+    <color name="transparent_text_color">#8491AB</color>
+
+    <color name="spend_dashboard_tab_layout_background">#ECEEF4</color>
+
+    <color name="error_bg_color">#FFEBEE</color>
+
 </resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/all_curve_edge_gray_stroke"
+    android:paddingBottom="@dimen/margin_10"
+    android:layout_marginTop="@dimen/margin_15"
+    android:layout_marginStart="@dimen/margin_15"
+    android:layout_marginEnd="@dimen/margin_15">
+
+    <TextView
+        android:id="@+id/popular_currencies_amount_tv"
+        style="@style/PlaceholderTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="This is great ..." />
+
+    <TextView
+        android:id="@+id/popular_currencies_symbol_tv"
+        style="@style/LaunchTextLightTextAppearance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_15"
+        tools:text="2022-12-11"
+        android:textSize="@dimen/textSize_12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popular_currencies_amount_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

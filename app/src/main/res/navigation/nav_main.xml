@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.danzucker.currency.presentation.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main"
+        >
+        <action
+            android:id="@+id/action_mainFragment_to_detailDashboardFragment"
+            app:destination="@id/detailDashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailDashboardFragment"
+        android:name="com.danzucker.currency.presentation.detail.DetailDashboardFragment"
+        android:label="DetailDashboardFragment"
+        tools:layout="@layout/fragment_detail_dashboard"
+        >
+        <argument
+            android:name="base"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="target"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="currentDate"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="lastThreeDaysDate"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+
+</navigation>
