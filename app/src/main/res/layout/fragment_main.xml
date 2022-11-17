@@ -114,7 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:dropDownAnchor="@+id/fragment_edit_profile_residential_lga_tl"
-            android:hint="Select"
+            android:hint="@string/select_str"
             android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>

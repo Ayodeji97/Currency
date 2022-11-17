@@ -24,12 +24,14 @@ class MainFragment : Fragment() {
     private var currentBinding: FragmentMainBinding? = null
     private val ui get() = currentBinding!!
 
-    private val mainViewModel : MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     private var baseSelectedItem: String = ""
     private var baseItemPosition: Int = 0
     private var targetSelectedItem: String = ""
     private var targetItemPosition: Int = 0
+
+    private var currencySymbolList = listOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,43 +50,52 @@ class MainFragment : Fragment() {
         baseSelectedItem()
         targetSelectedItem()
 
-        convertCurrency ()
+        //convertCurrency ()
 
-        convertedCurrencySubscriber ()
+        convertedCurrencySubscriber()
 
-       ui.swapActionBtn.setOnClickListener {
-           swapValues()
-       }
+        ui.swapActionBtn.setOnClickListener {
+            swapValues()
+            mainViewModel.onTriggeredEvent(MainViewEvent.GetCurrencySymbols)
+        }
 
         ui.showDetailsNextBtn.setOnClickListener {
-            val currentDate = getCurrentDate ()
+            val currentDate = getCurrentDate()
             val lastThreeDaysDate = getThreeDaysAgo()
+            val base = ui.baseCurrencySpinner.text.toString()
+            val target = ui.targetCurrencySpinner.text.toString()
+            val action = MainFragmentDirections.actionMainFragmentToDetailDashboardFragment(
+                base, target, currentDate, lastThreeDaysDate
+            )
+            findNavController().navigate(action)
         }
 
     }
 
-    private fun convertCurrency () {
+    private fun convertCurrency() {
         ui.fragmentMainAmountEt.afterTextChangedDelayed {
             val base = ui.baseCurrencySpinner.text.toString()
             val target = ui.targetCurrencySpinner.text.toString()
-            if (base.isNotEmpty() && target.isNotEmpty()){
-                getConvertedCurrency()
-            } else {
-                showSnackBar(requireView(), "Currency not selected")
+            if (base.isNotEmpty() && target.isNotEmpty()) {
+                // getConvertedCurrency()
             }
         }
     }
 
     private fun getConvertedCurrency() {
         val amount = ui.fragmentMainAmountEt.text.toString()
-        mainViewModel.onTriggeredEvent(MainViewEvent.GetConvertCurrencyData(
-            baseSelectedItem, targetSelectedItem, amount
-        ))
+        Log.i("DDDD3", "$baseSelectedItem")
+        Log.i("DDDD4", "$targetSelectedItem")
+        mainViewModel.onTriggeredEvent(
+            MainViewEvent.GetConvertCurrencyData(
+                baseSelectedItem, targetSelectedItem, amount
+            )
+        )
     }
 
-    private fun convertedCurrencySubscriber () {
+    private fun convertedCurrencySubscriber() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            mainViewModel.convertCurrencyViewState.collectLatest { state->
+            mainViewModel.convertCurrencyViewState.collectLatest { state ->
                 ui.apply {
                     progressBar.isVisible = state.isLoading
                     if (state.error != "") {
@@ -93,8 +104,10 @@ class MainFragment : Fragment() {
                         state.convertCurrency?.let {
                             val result = it.result
                             ui.convertRateEt.setText(result.toString())
+                            ui.fragmentMainAmountEt.setText(
+                                it.amount.toString()
+                            )
                         }
-
                     }
                 }
 
@@ -105,13 +118,14 @@ class MainFragment : Fragment() {
 
     private fun getCurrencySymbolSubscriber() {
         viewLifecycleOwner.lifecycleScope.launchWhenStarted {
-            mainViewModel.currencySymbolViewState.collectLatest { state->
+            mainViewModel.currencySymbolViewState.collectLatest { state ->
                 ui.apply {
                     progressBar.isVisible = state.isLoading
                     if (state.error != "") {
                         showSnackBar(requireView(), state.error)
                     } else {
                         state.currencySymbols?.let {
+                            currencySymbolList = it.symbols
                             populateSpinner(requireContext(), baseCurrencySpinner, it.symbols)
                             populateSpinner(requireContext(), targetCurrencySpinner, it.symbols)
                         }
@@ -125,12 +139,11 @@ class MainFragment : Fragment() {
     private fun baseSelectedItem() {
         ui.baseCurrencySpinner.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
-                baseItemPosition = position
+                baseItemPosition = parent.selectedItemPosition + 1
                 baseSelectedItem = parent.getItemAtPosition(position).toString()
                 val target = ui.targetCurrencySpinner.text.toString()
-                val amount = ui.fragmentMainAmountEt.text.toString()
-                if (amount.isNotEmpty() && target.isNotEmpty()){
-                    getConvertedCurrency()
+                if (target.isNotEmpty()) {
+                    //getConvertedCurrency()
                 }
             }
     }
@@ -139,21 +152,29 @@ class MainFragment : Fragment() {
         ui.targetCurrencySpinner.onItemClickListener =
             AdapterView.OnItemClickListener { parent, view, position, id ->
                 targetSelectedItem = parent.getItemAtPosition(position).toString()
-                targetItemPosition = position
-
-                val amount = ui.fragmentMainAmountEt.text.toString()
+                targetItemPosition = parent.selectedItemPosition + 1
                 val base = ui.baseCurrencySpinner.text.toString()
-                if (amount.isNotEmpty() && base.isNotEmpty()){
-                    getConvertedCurrency()
+                if (base.isNotEmpty()) {
+                    //getConvertedCurrency()
                 }
             }
     }
 
     private fun swapValues() {
-        ui.baseCurrencySpinner.setSelection(targetItemPosition)
-        ui.targetCurrencySpinner.setSelection(baseItemPosition)
+        ui.apply {
+            baseCurrencySpinner.text = targetCurrencySpinner.text
+            targetCurrencySpinner.text = baseCurrencySpinner.text
+            populateSpinner(requireContext(), baseCurrencySpinner, currencySymbolList)
+            populateSpinner(requireContext(), targetCurrencySpinner, currencySymbolList)
+            targetCurrencySpinner.dismissDropDown()
+            baseCurrencySpinner.dismissDropDown()
+            if (baseCurrencySpinner.text.isNotEmpty() && targetCurrencySpinner.text.isNotEmpty()) {
+                baseSelectedItem = targetCurrencySpinner.text.toString()
+                targetSelectedItem = baseCurrencySpinner.text.toString()
+                getConvertedCurrency()
+            }
+        }
     }
-
 
 
     override fun onDestroyView() {

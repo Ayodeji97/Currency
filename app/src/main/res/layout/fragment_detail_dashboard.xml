@@ -2,35 +2,235 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/fragment_spend_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="@dimen/margin_15"
-        android:background="@drawable/detail_dashboard_current_indicator"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tabBackground="@drawable/detail_dashboard_indicator"
-        app:tabIndicatorHeight="0dp"
-        app:tabMode="fixed"
-        app:tabTextAppearance="@style/TabLayoutTextStyle" />
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
 
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/fragment_spend_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/margin_40"
+        android:layout_height="@dimen/margin_40"
+        android:backgroundTint="@color/primary_color"
+        android:progressBackgroundTint="@color/primary_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_spend_tab_layout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/graph_tv"
+        style="@style/PlaceholderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_16"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginStart="@dimen/margin_15"
+        android:text="@string/chart_str"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/graph_section_cl"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_100"
+        android:background="@drawable/all_curve_edge_gray_stroke"
+        android:paddingBottom="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        app:layout_constraintTop_toBottomOf="@+id/graph_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <!--Ui component for our bar chart-->
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/idBarChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/divider_1"
+        android:layout_width="2dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/divider_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graph_section_cl" />
+
+
+    <TextView
+        android:id="@+id/currency_histories_tv"
+        style="@style/PlaceholderTextStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_24"
+        android:text="@string/currency_histories_str"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/popular_currencies_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/graph_section_cl" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/first_date_cl"
+        android:layout_width="@dimen/margin_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/all_curve_edge_gray_stroke"
+        android:paddingBottom="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider_1"
+        app:layout_constraintTop_toBottomOf="@+id/currency_histories_tv"
+        >
+        <TextView
+            android:id="@+id/first_date_amount_tv"
+            style="@style/PlaceholderTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_marginEnd="@dimen/margin_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is great ..." />
+
+        <TextView
+            android:id="@+id/first_date_tv"
+            style="@style/LaunchTextLightTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_15"
+            tools:text="2022-12-11"
+            android:textSize="@dimen/textSize_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/first_date_amount_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/second_date_cl"
+        android:layout_width="@dimen/margin_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/all_curve_edge_gray_stroke"
+        android:paddingBottom="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider_1"
+        app:layout_constraintTop_toBottomOf="@+id/first_date_cl"
+        >
+        <TextView
+            android:id="@+id/second_date_amount_tv"
+            style="@style/PlaceholderTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_marginEnd="@dimen/margin_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is great ..." />
+
+        <TextView
+            android:id="@+id/second_date_tv"
+            style="@style/LaunchTextLightTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_15"
+            tools:text="2022-12-11"
+            android:textSize="@dimen/textSize_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/second_date_amount_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/third_date_cl"
+        android:layout_width="@dimen/margin_0"
+        android:layout_height="wrap_content"
+        android:background="@drawable/all_curve_edge_gray_stroke"
+        android:paddingBottom="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_15"
+        android:layout_marginStart="@dimen/margin_15"
+        android:layout_marginEnd="@dimen/margin_15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider_1"
+        app:layout_constraintTop_toBottomOf="@+id/second_date_cl"
+        >
+        <TextView
+            android:id="@+id/third_date_amount_tv"
+            style="@style/PlaceholderTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginStart="@dimen/margin_15"
+            android:layout_marginEnd="@dimen/margin_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="This is great ..." />
+
+        <TextView
+            android:id="@+id/third_date_tv"
+            style="@style/LaunchTextLightTextAppearance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_15"
+            tools:text="2022-12-11"
+            android:textSize="@dimen/textSize_12"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/third_date_amount_tv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/popular_currencies_tv"
+        style="@style/PlaceholderTextStyle"
+        android:layout_width="@dimen/margin_0"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_24"
+        android:text="@string/popular_currencies_str"
+        android:gravity="center"
+        android:textSize="@dimen/text_size_16"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/divider_1"
+        app:layout_constraintTop_toBottomOf="@+id/graph_section_cl" />
+
+
+
+
+    <ListView
+        android:id="@+id/popular_currencies_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/popular_currencies_tv"
+        app:layout_constraintStart_toEndOf="@+id/divider_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

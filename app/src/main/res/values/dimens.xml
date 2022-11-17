@@ -3,7 +3,16 @@
     <dimen name="seek_bar_thickness">4dp</dimen>
     <dimen name="seek_bar_thumb_size">20dp</dimen>
 
-<!--    Margin Section -->
+
+
+    <!--    Text size dimens - sp -->
+    <dimen name="text_size_8">8sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+
+
+
+    <!--    Margin Section -->
     <dimen name="margin_0">0dp</dimen>
     <dimen name="margin_1">1dp</dimen>
     <dimen name="margin_2">2dp</dimen>

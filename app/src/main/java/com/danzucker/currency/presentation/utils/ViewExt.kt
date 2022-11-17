@@ -81,7 +81,7 @@ fun Fragment.getThreeDaysAgo () : String {
     val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
     val calender = Calendar.getInstance()
     simpleDateFormat.format(calender.time)
-    calender.add(Calendar.DATE, -3)
+    calender.add(Calendar.DATE, -2)
     return getDate(calender)
 
 }

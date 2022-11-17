@@ -13,6 +13,6 @@ class PopularCurrenciesDtoMapper @Inject constructor() :
             date = type.date ?: "",
             rates = type.rates ?: hashMapOf(),
             success = type.success ?: false,
-            timestamp = type.timestamp ?: 0L
+            timestamp = type.timestamp ?: 0L,
         )
 }

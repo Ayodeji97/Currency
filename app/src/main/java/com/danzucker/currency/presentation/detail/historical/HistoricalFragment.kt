@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.danzucker.currency.databinding.FragmentHistoricalBinding
+import com.danzucker.currency.presentation.detail.DetailDashboardFragmentArgs
 import com.danzucker.currency.presentation.detail.DetailViewEvent
 import com.danzucker.currency.presentation.detail.DetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,6 +24,11 @@ class HistoricalFragment : Fragment() {
 
     private val detailViewModel : DetailViewModel by viewModels()
 
+    private lateinit var base : String
+    private lateinit var target : String
+    private lateinit var currentDate : String
+    private lateinit var lastThreeDaysDate : String
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,12 +41,17 @@ class HistoricalFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
+        getHistoricalCurrencyData ()
+        getHistoricalCurrencySubscriber()
     }
 
     private fun getHistoricalCurrencyData () {
         detailViewModel.onTriggeredEvent(
             DetailViewEvent.GetHistoricalCurrencyData(
-            "2022-11-16", "2022-11-18", "EUR", "NGN"
+                lastThreeDaysDate, currentDate, base, target
         ))
     }
 
