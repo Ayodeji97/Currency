@@ -3,8 +3,8 @@
 Hey there 👋🏼👋🏼👋🏼 !
 Currency App is a simple android application developed to demonstrate clean architectural guidelines with MVVM android architecture.
 
-_Note: Currency App data source is from star wars api and not cache implement.
-See API Documentation [Here]("https://fixer.io/documentation")_
+_Note: Currency App data source is from Fixer api and not cache implement.
+See API Documentation [Here]("https://fixer.io/documentation")
 Go to the site to get a free api_key
 
 ## Feature
