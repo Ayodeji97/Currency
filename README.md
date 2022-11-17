@@ -3,7 +3,7 @@
 Hey there 👋🏼👋🏼👋🏼 !
 Currency App is a simple android application developed to demonstrate clean architectural guidelines with MVVM android architecture.
 
-_Note: Currency App data source is from Fixer api and not cache implement.
+_Note: Currency App data source is from Fixer api and only the list of currency symbol was cache.
 
 Go to the site to get an api_key and then you can run the app
 
