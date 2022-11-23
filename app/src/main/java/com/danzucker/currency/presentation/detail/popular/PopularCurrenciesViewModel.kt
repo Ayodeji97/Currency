@@ -29,7 +29,7 @@ class PopularCurrenciesViewModel @Inject constructor(
     private fun getPopularCurrencies(base: String, symbols: String) {
         viewModelScope.launch {
             _popularCurrenciesViewState.value.let { state ->
-                _popularCurrenciesViewState.value = state.copy(isLoading = false)
+                _popularCurrenciesViewState.value = state.copy(isLoading = true)
                 popularCurrenciesUseCase.invoke(base, symbols).collect {
                     when (it) {
                         is Result.Success -> {

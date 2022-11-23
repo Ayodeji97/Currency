@@ -3,7 +3,7 @@ package com.danzucker.currency.business.utils
 object Constants {
 
     // Api Session
-    const val API_KEY = "khET0c2fMh3C97Juu1Y12DOoAM7cLoDY"
+    const val API_KEY = "omPjz8s5QAmS7KGgZRgMVT1ZuWxBVqvl"
     const val BASE_URL = "https://api.apilayer.com/fixer/"
 
     // Database Session
